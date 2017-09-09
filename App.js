@@ -21,15 +21,11 @@ export default class App extends React.Component {
             style={{ width: 300, height: 300 }}
           />
           <Text
-            style={{
-              position: 'absolute',
-              left: 5, top: 5, right: 5,
-              color: 'white',
-              backgroundColor: 'transparent',
-              fontSize: 28,
-              fontWeight: '900',
-              textAlign: 'center',
-            }}>
+            style={[styles.text, { top: 5 }]}>
+            hello, world
+          </Text>
+          <Text
+            style={[styles.text, { bottom: 5 }]}>
             hello, world
           </Text>
         </View>
@@ -54,6 +50,15 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  text: {
+    position: 'absolute',
+    left: 5, right: 5,
+    color: 'white',
+    backgroundColor: 'transparent',
+    fontSize: 28,
+    fontWeight: '900',
+    textAlign: 'center',
+  },
   button: {
     padding: 5,
     margin: 5,
