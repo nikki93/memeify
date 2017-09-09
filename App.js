@@ -5,16 +5,28 @@ import {
   View,
   TouchableOpacity,
   Image,
+  TextInput,
 } from 'react-native';
 
 export default class App extends React.Component {
   state = {
     imageUri: 'http://i0.kym-cdn.com/photos/images/original/000/008/504/Philosoraptor_template.jpg',
+    topText: '',
+    bottomText: '',
   }
 
   render() {
     return (
       <View style={styles.container}>
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => this.setState({ topText: text })}
+        />
+        <TextInput
+          style={styles.input}
+          onChangeText={(text) => this.setState({ bottomText: text })}
+        />
+
         <View style={{ margin: 5 }}>
           <Image
             source={{ uri: this.state.imageUri }}
@@ -22,13 +34,14 @@ export default class App extends React.Component {
           />
           <Text
             style={[styles.text, { top: 5 }]}>
-            hello, world
+            {this.state.topText}
           </Text>
           <Text
             style={[styles.text, { bottom: 5 }]}>
-            hello, world
+            {this.state.bottomText}
           </Text>
         </View>
+
         <TouchableOpacity
           style={styles.button}
           onPress={this._onPick}>
@@ -50,6 +63,14 @@ export default class App extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    alignSelf: 'stretch',
+    margin: 5,
+    padding: 5,
+  },
   text: {
     position: 'absolute',
     left: 5, right: 5,
